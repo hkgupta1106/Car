@@ -1,0 +1,26 @@
+import java.util.*;
+public class Customer {
+	 String name;
+	 int id;
+	 ArrayList<Car> obj=new ArrayList<Car>();
+	 Customer(){}
+	Customer(int id,String name,Car car)
+	{
+		this.id=id;
+		this.name=name;
+		obj.add(car);
+	}
+	void initiallizer(Car car)
+	{
+		obj.add(car);
+	}
+	void displayCars()
+	{
+		Iterator<Car> itr=obj.iterator();
+		while(itr.hasNext())
+		{
+			Car st=(Car)itr.next();  
+		    System.out.println(st.carName+" "+st.id+" "+st.model+" "+st.price+" "+st.resaleValues);  
+		}
+	}
+}

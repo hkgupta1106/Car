@@ -1,0 +1,8 @@
+
+public class Maruti extends Car{
+	public static double resaleValues;
+	Maruti(int price)
+	{
+		resaleValues= 0.4*price;
+	}
+}

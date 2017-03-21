@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class CarPurchaseUtility {
+
+}
+
+public class Car{
+	public static int id;
+	public static String name;
+	public static int price;
+}
+
+public class Customer{
+	public static String name;
+	public static String id;
+}
+
+public class Hyundai extends Car{
+	public static int resaleValues;
+	resaleValues = 0.4*price;
+}
+
+public class Toyota extends Car{
+	public static int resaleValues;
+	resaleValues = 0.8*price;
+}
+
+public class Maruti extends Car{
+	public static int resaleValues;
+	resaleValues = 0.6*price;
+}
+

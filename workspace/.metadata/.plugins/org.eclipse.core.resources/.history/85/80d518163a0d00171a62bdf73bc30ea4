@@ -1,0 +1,5 @@
+
+public class Hyundai {
+	 int resaleValues
+	resaleValues = 0.4*price;
+}

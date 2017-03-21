@@ -1,0 +1,8 @@
+
+public class Hyundai extends Car{
+	public static double resaleValues;
+	Hyundai(int price)
+	{
+		resaleValues= 0.4* price;
+	}
+}
