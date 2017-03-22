@@ -1,0 +1,11 @@
+
+public interface UserChoice {
+int ADD_CUSTOMER=1;
+int ADD_CAR_TO_CUSTOMER=2;
+int LIST_OF_ALL_CUSTOMER=3;
+int LIST_OF_INDIVIDUAL_CUSTOMER=4;
+int GENERATE_PRIZES=5;
+char TOYOTA='A';
+char MARUTI='B';
+char HYUNDAI='C';
+}
