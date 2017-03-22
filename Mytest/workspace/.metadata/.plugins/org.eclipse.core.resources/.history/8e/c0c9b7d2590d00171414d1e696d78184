@@ -1,0 +1,57 @@
+import java.util.*;
+
+public class controller implements UserChoice {
+
+	public static void sortAccToName(ArrayList<Customer> obj1)
+	{
+		int i;
+		System.out.println(obj1.size());
+	}
+
+public static void main(String args[]){
+	char a;
+	int id=1;
+	ArrayList<Customer> obj1=new ArrayList<Customer>();
+	Scanner obj=new Scanner(System.in);
+	do
+	{
+	System.out.println("1.Add new customer.");
+	System.out.println("2.Add new car to an existing customer.");
+	System.out.println("3.list of all cutomers with their cars.");
+	System.out.println("4.list of an individual customer.");
+	System.out.println("5.generate prizes for customer.");
+	System.out.println("enter your opton:");
+	int option=obj.nextInt();
+	switch(option)
+	{
+	case ADD_CUSTOMER:
+	{
+		String name=obj.next();
+		Customer customer=new Customer(id,name);
+		obj1.add(customer);
+		id++;
+	}
+	break;
+	case ADD_CAR_TO_CUSTOMER:System.out.println("Hello2");
+	break;
+	case LIST_OF_ALL_CUSTOMER:{
+		sortAccToName(obj1);
+		Iterator<Customer> itr=obj1.iterator();  
+		  while(itr.hasNext()){  
+			  Customer st=(Customer)itr.next();  
+			    System.out.println(st.id+" "+st.name);  
+	}
+	}
+	break;
+	case LIST_OF_INDIVIDUAL_CUSTOMER:System.out.println("Hello4");
+	break;
+	case GENERATE_PRIZES:System.out.println("Hello5");
+	break;
+	default : System.exit(1);
+	}
+	System.out.println("do u want to continue y or n");
+	a=obj.next().charAt(0);
+}while(a=='Y'||a=='y');
+	obj.close();
+}
+}

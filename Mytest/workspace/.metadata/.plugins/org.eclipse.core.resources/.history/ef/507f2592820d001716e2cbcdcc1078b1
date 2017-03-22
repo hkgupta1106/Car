@@ -1,0 +1,79 @@
+import java.util.*;
+
+public class controller implements UserChoice {
+	
+public static void main(String args[]){
+	char a;
+	int id=1;
+	ArrayList<Customer> obj1=new ArrayList<Customer>();
+	Scanner obj=new Scanner(System.in);
+	do
+	{
+	System.out.println("1.Add new customer.");
+	System.out.println("2.Add new car to an existing customer.");
+	System.out.println("3.list of all cutomers with their cars.");
+	System.out.println("4.list of an individual customer.");
+	System.out.println("5.generate prizes for customer.");
+	System.out.println("enter your opton:");
+	int option=obj.nextInt();
+	switch(option)
+	{
+	case ADD_CUSTOMER:
+	{
+		System.out.println("enter name of the customer");
+		String name=obj.next();
+		System.out.println("A. Toyota\n"+"B. Maruti\n"+"C. Hyundai\n"+"enter choice of car\n");
+		char choice=obj.next().charAt(0);
+		switch(choice)
+		{
+		case TOYOTA:{
+			int idOfCar=obj.nextInt();
+			String model=obj.next();
+			int price=obj.nextInt();
+			Toyota toyota=new Toyota(idOfCar,model,price);
+			
+		}
+		break;
+		case MARUTI:{
+			int idOfCar=obj.nextInt();
+			String model=obj.next();
+			int price=obj.nextInt();
+			Maruti maruti=new Maruti(idOfCar,model,price);
+		}
+		break;
+		case HYUNDAI:{
+			int idOfCar=obj.nextInt();
+			String model=obj.next();
+			int price=obj.nextInt();
+			Hyundai hyundai=new Hyundai(idOfCar,model,price);
+		}
+		break;
+		}
+		Customer customer=new Customer(id,name);
+		obj1.add(customer);
+		id++;
+	}
+	break;
+	case ADD_CAR_TO_CUSTOMER:System.out.println("Hello2");
+	break;
+	case LIST_OF_ALL_CUSTOMER:{
+		
+		Iterator<Customer> itr=obj1.iterator();  
+		  while(itr.hasNext()){  
+			  Customer st=(Customer)itr.next();  
+			    System.out.println(st.id+" "+st.name);  
+	}
+	}
+	break;
+	case LIST_OF_INDIVIDUAL_CUSTOMER:System.out.println("Hello4");
+	break;
+	case GENERATE_PRIZES:System.out.println("Hello5");
+	break;
+	default : System.exit(1);
+	}
+	System.out.println("do u want to continue y or n");
+	a=obj.next().charAt(0);
+}while(a=='Y'||a=='y');
+	obj.close();
+}
+}

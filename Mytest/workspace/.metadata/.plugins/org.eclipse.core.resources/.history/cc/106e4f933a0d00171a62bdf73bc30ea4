@@ -1,0 +1,6 @@
+
+public class Car{
+	public static int id;
+	public static String name;
+	public static int price;
+}

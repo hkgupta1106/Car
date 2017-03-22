@@ -1,0 +1,190 @@
+import java.util.*;
+
+public class controller implements UserChoice {
+	
+public static void main(String args[]){
+	char a;
+	int id=1;
+	ArrayList<Customer> customerList=new ArrayList<Customer>();
+	Scanner scanner=new Scanner(System.in);
+	do
+	{
+	System.out.println("1.Add new customer.");
+	System.out.println("2.Add new car to an existing customer.");
+	System.out.println("3.list of all cutomers with their cars.");
+	System.out.println("4.list of an individual customer.");
+	System.out.println("5.generate prizes for customer.");
+	System.out.println("enter your opton:");
+	int option=scanner.nextInt();
+	switch(option)
+	{
+	case ADD_CUSTOMER:
+	{
+		System.out.println("enter name of the customer");
+		String name=scanner.next();
+		System.out.println("A. Toyota\n"+"B. Maruti\n"+"C. Hyundai\n"+"enter choice of car\n");
+		char choice=scanner.next().charAt(0);
+		switch(choice)
+		{
+		case TOYOTA:{
+			System.out.println("enter id ,model ,price of the car:");
+			int idOfCar=scanner.nextInt();
+			String model=scanner.next();
+			int price=scanner.nextInt();
+			Toyota toyota=new Toyota(idOfCar,model,price);
+			Customer customer=new Customer(id,name,toyota);
+			customerList.add(customer);
+		}
+		break;
+		case MARUTI:{
+			System.out.println("enter id ,model ,price of the car:");
+			int idOfCar=scanner.nextInt();
+			String model=scanner.next();
+			int price=scanner.nextInt();
+			Maruti maruti=new Maruti(idOfCar,model,price);
+			Customer customer=new Customer(id,name,maruti);
+			customerList.add(customer);
+		}
+		break;
+		case HYUNDAI:{
+			System.out.println("enter id ,model ,price of the car:");
+			int idOfCar=scanner.nextInt();
+			String model=scanner.next();
+			int price=scanner.nextInt();
+			Hyundai hyundai=new Hyundai(idOfCar,model,price);
+			Customer customer=new Customer(id,name,hyundai);
+			customerList.add(customer);
+		}
+		break;
+		}
+			
+		id++;
+	}
+	break;
+	case ADD_CAR_TO_CUSTOMER:{
+		System.out.println("enter id of the customer");
+		int id1=scanner.nextInt();
+		int i=0;
+		Customer customer=new Customer();
+		Iterator<Customer> itr=customerList.iterator();
+		while(itr.hasNext())
+		{
+			customer=itr.next();
+			if(id1==customer.id)
+			break;
+		i++;
+		}
+		if(i!=customerList.size())
+		{
+		System.out.println("A. Toyota\n"+"B. Maruti\n"+"C. Hyundai\n"+"enter choice of car\n");
+		char choice=scanner.next().charAt(0);		
+		switch(choice)
+		{
+		case TOYOTA:{
+			System.out.println("enter id ,model ,price of the car:");
+			int idOfCar=scanner.nextInt();
+			String model=scanner.next();
+			int price=scanner.nextInt();
+			Toyota toyota=new Toyota(idOfCar,model,price);
+			customer.initiallizer(toyota);
+		}
+		break;
+		case MARUTI:{
+			System.out.println("enter id ,model ,price of the car:");
+			int idOfCar=scanner.nextInt();
+			String model=scanner.next();
+			int price=scanner.nextInt();
+			Maruti maruti=new Maruti(idOfCar,model,price);
+			customer.initiallizer(maruti);
+		}
+		break;
+		case HYUNDAI:{
+			int idOfCar=scanner.nextInt();
+			String model=scanner.next();
+			int price=scanner.nextInt();
+			Hyundai hyundai=new Hyundai(idOfCar,model,price);
+			customer.initiallizer(hyundai);
+		}
+		break;
+		}
+	}
+		else
+		{
+			System.out.println("enter valid customer id");
+		}
+	}
+	break;
+	case LIST_OF_ALL_CUSTOMER:{
+		
+		Iterator<Customer> itr=customerList.iterator();  
+		  while(itr.hasNext()){  
+			  Customer customer=(Customer)itr.next();  
+			    System.out.println(customer.id+" "+customer.name);  
+			    customer.displayCars();
+	}
+	}
+	break;
+	case LIST_OF_INDIVIDUAL_CUSTOMER:{
+		int i=0;
+		System.out.println("enter id of customer you want to see");
+		int id1=scanner.nextInt();
+        Iterator<Customer> itr=customerList.iterator();
+        while(itr.hasNext())
+        {
+        	Customer customer=(Customer)itr.next();  
+        	if(customer.id==id1)
+        	{
+        		System.out.println(customer.id+" "+customer.name);  
+			    customer.displayCars();
+			    break;
+        	}
+        	i++;
+        }
+        if(i==customerList.size())
+        	System.out.println("enter valid customer id");
+	}
+	break;
+	case GENERATE_PRIZES:{
+		int k=0;
+		int[] array=new int[3];
+		int[] random=new int[6];
+		int[] array1=new int[3];
+		Random rand=new Random();
+		System.out.println("enter any three id of the customers");
+		for(int i=0;i<3;i++)
+		{
+			array[i]=scanner.nextInt();
+		}
+		for(int i=0;i<6;i++)
+		{
+			int randomNum = rand.nextInt((customerList.size() - 1) + 1) + 1;
+			random[i]=randomNum;
+		}
+		for(int i=0;i<3;i++)
+		{
+			for(int j=0;j<6;j++)
+			{
+				if(array[i]==random[j])
+				{
+					array1[k]=array[i];
+					k++;
+				}
+			}
+		}
+		System.out.println("following are the random customers generated:");
+		for(int i=0;i<6;i++)
+			System.out.println(random[i]);
+		System.out.println("Following id's are the winners:");
+		for(int i=0;i<k;i++)
+			System.out.println(array1[i]);
+		
+	}
+	break;
+	default : System.exit(1);
+	}
+	System.out.println("do u want to continue y or n");
+	a=scanner.next().charAt(0);
+}while(a=='Y'||a=='y');
+	scanner.close();
+}
+}
